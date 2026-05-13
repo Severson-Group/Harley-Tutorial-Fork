@@ -6,6 +6,7 @@
 // This file is used to override system defines and conditionally enable
 // various system-level firmware features.
 
+
 // Specify hardware revision (i.e. REV E, REV F, etc)
 #define USER_CONFIG_HARDWARE_TARGET (AMDC_REV_F)
 
