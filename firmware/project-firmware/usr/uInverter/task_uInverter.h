@@ -14,4 +14,7 @@ void task_uInverter_callback(void *arg);
 int task_uInverter_set_frequency(double freq);
 int task_uInverter_set_amplitude(double amplitude);
 
+int task_uInverter_stats_print();
+int task_uInverter_stats_reset();
+
 #endif // TASK_UINVERTER_H

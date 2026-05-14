@@ -3,6 +3,7 @@
 #include "usr/uInverter/task_uInverter.h"
 #include "sys/scheduler.h"
 #include "drv/pwm.h"
+#include "drv/cpu_timer.h"
 #include <math.h>
 
 // Scheduler TCB which holds task "context"
@@ -20,7 +21,9 @@ int task_uInverter_init(void){
 
     // Fill TCB with parameters
     scheduler_tcb_init(&tcb, task_uInverter_callback, 
-                        NULL, "vsi", TASK_UINVERTER_INTERVAL_USEC);
+                        NULL, "uInverter", TASK_UINVERTER_INTERVAL_USEC);
+
+    task_stats_enable(&tcb.stats);
 
     // Register task with scheduler
     return scheduler_tcb_register(&tcb);
@@ -57,6 +60,16 @@ int task_uInverter_set_amplitude(double amplitude){
         return FAILURE;
     Do = amplitude;
     return SUCCESS;
+}
+
+int task_uInverter_stats_print(){
+	task_stats_print(&tcb.stats);
+	return SUCCESS;
+}
+
+int task_uInverter_stats_reset(){
+	task_stats_reset(&tcb.stats);
+	return SUCCESS;
 }
 
 #endif // APP_uInverter
