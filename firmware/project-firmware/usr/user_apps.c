@@ -8,7 +8,6 @@
 //
 // Also, conditionally call the app's init function.
 
-
 #ifdef APP_PCBTEST
 #include "usr/pcbtest/app_pcbtest.h"
 #endif
