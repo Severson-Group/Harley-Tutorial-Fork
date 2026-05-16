@@ -28,6 +28,11 @@
 #include "usr/dac/app_dac.h"
 #endif
 
+//This is my VSI app
+#ifdef APP_UINVERTER
+#include "usr/uInverter/app_uInverter.h"
+#endif
+
 void user_apps_init(void)
 {
 #ifdef APP_PCBTEST
@@ -36,6 +41,10 @@ void user_apps_init(void)
 
 #ifdef APP_BLINK
     app_blink_init();
+#endif
+
+#ifdef APP_UINVERTER
+    app_uInverter_init();
 #endif
 
 #ifdef APP_BETA_LABS
