@@ -9,8 +9,6 @@ void app_uInverter_init(void)
 //init code here, run sub-files and their init code.
 // Register "uInverter" command with system
     cmd_uInverter_register();
-
-
 }
 
 #endif // APP_uInverter
