@@ -15,6 +15,7 @@ static command_entry_t cmd_entry;
 // Defines help content displayed for this command
 // when user types "help" at command prompt
 static command_help_t cmd_help[] = {
+	{ "stats <print/reset>", "Print or Reset statistics"},
     { "start", "Begin VSI output" },
     { "stop", "End VSI output" },
     { "freq <freq>", "Set the uInverter frequency" },
@@ -71,6 +72,14 @@ int cmd_uInverter(int argc, char **argv)
 
         return CMD_SUCCESS;
     }
+
+    if (argc == 3 && STREQ("stats", argv[1])){
+    	if (STREQ("print", argv[2]))
+    		return task_uInverter_stats_print() == SUCCESS ? CMD_SUCCESS : CMD_FAILURE;
+    	if(STREQ("reset", argv[2]))
+    		return task_uInverter_stats_reset() == SUCCESS ? CMD_SUCCESS : CMD_FAILURE;
+    }
+
 
     return CMD_INVALID_ARGUMENTS;
 }
